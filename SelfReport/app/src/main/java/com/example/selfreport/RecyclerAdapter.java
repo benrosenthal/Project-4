@@ -39,6 +39,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             mLocationTextView = (TextView) itemView.findViewById(R.id.development_text_view);
             mProblemTimeTextView = (TextView) itemView.findViewById(R.id.time_elapsed_text_view);
 
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int position = getAdapterPosition();
+////                    Snackbar.make(v, "Click detected on item " + position,
+////                            Snackbar.LENGTH_LONG).setAction("ACTION", null).show();
+//                }
+//            });
+
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.selfreport;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
 
 import java.util.Date;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mRecyclerAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private Button mReportProblemButton;
 
 
     @Override
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Chronometer c = new Chronometer(getApplicationContext());
         c.start();
 
-
+        mReportProblemButton = (Button)findViewById(R.id.addProblemButton);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -49,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
         // specify an adapter (see also next example)
         mRecyclerAdapter = new RecyclerAdapter();
         mRecyclerView.setAdapter(mRecyclerAdapter);
+
+        mReportProblemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reportIntent = new Intent(MainActivity.this, ReportActivity.class);
+                startActivity(reportIntent);
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

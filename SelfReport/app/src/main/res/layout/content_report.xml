@@ -10,23 +10,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.selfreport.MainActivity"
-    tools:showIn="@layout/activity_main">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_above="@+id/addProblemButton"/>
+    tools:context="com.example.selfreport.ReportActivity"
+    tools:showIn="@layout/activity_report">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/addProblemButton"
-        android:text="REPORT A PROBLEM"
-        android:textSize="15sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
+        android:id="@+id/addPicButton"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgView"/>
 
 </RelativeLayout>

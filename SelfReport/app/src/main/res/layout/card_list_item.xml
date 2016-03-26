@@ -15,7 +15,9 @@
         card_view:cardCornerRadius="12dp"
         card_view:cardElevation="3dp"
         card_view:contentPadding="4dp"
-        card_view:cardBackgroundColor="@color/colorAccent">
+        card_view:cardBackgroundColor="@color/colorAccent"
+        android:foreground="?selectableItemBackground"
+        android:clickable="true">
 
 
             <RelativeLayout
@@ -30,7 +32,9 @@
                     android:src="@android:drawable/btn_star_big_on"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginRight="16dp"/>
+                    android:layout_marginRight="16dp"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"/>
 
 
                 <TextView
