@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">SelfReportRefactor</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--API KEYS-->
+
+    <string name="Open_311_app_ID">8ba15c83</string>
+    <string name="Open_311_app_key">a4792024614cacdc02a674a78e452f7a</string>
+    <string name="Shodan_Api_key">t2FIp5bzSuYk0nm2W8QeeA6RvLEpaAsN </string>
+
+    <string name="action_settings">Settings</string>
+    <string name="borough_spinner_prompt">Select Your Borough</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="boroughs_array">
+        <item>Brooklyn</item>
+        <item>The Bronx</item>
+        <item>Manhattan</item>
+        <item>Staten Island</item>
+        <item>Queens</item>
+    </string-array>
+    <string name="title_activity_submit_problem">SubmitProblemActivity</string>
+</resources>

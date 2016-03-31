@@ -6,19 +6,20 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class ReportActivity extends AppCompatActivity {
     private static int RESULT_LOAD_IMG = 1;
+    private Spinner mBoroughSpinner;
+    private ArrayAdapter<CharSequence> mBoroughAdapter;
     String imgDecodableString;
-    Button mAddPicButton;
     ImageView imgView;
 
     @Override
@@ -28,30 +29,24 @@ public class ReportActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //mFile = Environment.getExternalStorageDirectory().getAbsolutePath();
-        //final String path = android.os.Environment.DIRECTORY_DCIM;
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         imgView = (ImageView)findViewById(R.id.imgView);
-        mAddPicButton = (Button)findViewById(R.id.addPicButton);
-        mAddPicButton.setOnClickListener(new View.OnClickListener() {
+        imgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadImagefromGallery(imgView);
+                loadImageFromGallery(imgView);
             }
         });
 
+        mBoroughSpinner = (Spinner)findViewById(R.id.borough_spinner);
+        mBoroughAdapter = ArrayAdapter.createFromResource(this, R.array.boroughs_array, android.R.layout.simple_spinner_dropdown_item);
+        mBoroughAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mBoroughSpinner.setAdapter(mBoroughAdapter);
 
     }
 
-    public void loadImagefromGallery(View view) {
+    //
+
+    public void loadImageFromGallery(View view) {
         // Create intent to Open Image applications like Gallery, Google Photos
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -80,8 +75,9 @@ public class ReportActivity extends AppCompatActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
-                ImageView imgView = (ImageView) findViewById(R.id.imgView);
                 // Set the Image in ImageView after decoding the String
+
+                Log.d("WHATS IN IMAGE FILE", imgDecodableString);
                 imgView.setImageBitmap(BitmapFactory
                         .decodeFile(imgDecodableString));
 

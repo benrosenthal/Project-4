@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
-
-import java.util.Date;
-import java.util.Timer;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mRecyclerAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Button mReportProblemButton;
-
+    private String[] mPlanetTitles;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Date date = new Date();
-        Timer timer = new Timer();
+        mPlanetTitles = getResources().getStringArray(R.array.boroughs_array);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        Chronometer c = new Chronometer(getApplicationContext());
-        c.start();
+
+        // Set the adapter for the list view
+//        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+//                R.layout.activity_nav_drawer, mPlanetTitles));
+        // Set the list's click listener
+        //mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mReportProblemButton = (Button)findViewById(R.id.addProblemButton);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);

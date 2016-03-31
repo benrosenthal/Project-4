@@ -13,14 +13,27 @@
     tools:context="com.example.selfreport.ReportActivity"
     tools:showIn="@layout/activity_report">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addPicButton"/>
 
     <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imgView"
+        android:background="#414141"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgView"/>
+        android:id="@+id/borough_spinner"
+        android:prompt="@string/borough_spinner_prompt"
+        android:layout_marginTop="108dp"
+        android:layout_below="@+id/imgView"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        style="@android:style/Widget.Spinner"
+        android:spinnerMode="dialog"/>
+
+
 
 </RelativeLayout>

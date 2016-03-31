@@ -1,0 +1,12 @@
+/Users/User_1_Benjamin_Rosenthal/Desktop/adirepo/Project-4/SelfReport/app/src/main/res/TextIdeas
+
+//mFile = Environment.getExternalStorageDirectory().getAbsolutePath();
+//final String path = android.os.Environment.DIRECTORY_DCIM;
+
+//getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+Date date = new Date();
+        Timer timer = new Timer();
+
+        Chronometer c = new Chronometer(getApplicationContext());
+        c.start();

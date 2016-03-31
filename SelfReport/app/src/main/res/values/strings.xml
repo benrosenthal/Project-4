@@ -4,4 +4,20 @@
     <string name="Open_311_app_ID">8ba15c83</string>
     <string name="Open_311_app_key">a4792024614cacdc02a674a78e452f7a</string>
     <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="borough_spinner_prompt">Select Your Borough</string>
+
+    <string-array name="boroughs_array">
+        <item>Brooklyn</item>
+        <item>The Bronx</item>
+        <item>Manhattan</item>
+        <item>Staten Island</item>
+        <item>Queens</item>
+    </string-array>
+
+
 </resources>
