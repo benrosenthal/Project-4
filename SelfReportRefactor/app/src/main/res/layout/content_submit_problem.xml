@@ -31,7 +31,8 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner"
+            android:id="@+id/developments_spinner"
+            android:prompt="@string/borough_spinner_prompt"
             android:layout_gravity="center_horizontal"
             android:spinnerMode="dialog"
             style="@android:style/Widget.Spinner"/>

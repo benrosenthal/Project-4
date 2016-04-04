@@ -2,42 +2,45 @@ package com.example.selfreportrefactor.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.selfreportrefactor.Adapters.LeaderBoardRecyclerAdapter;
 import com.example.selfreportrefactor.R;
 
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.nio.ByteOrder;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LeaderBoardFragment.OnFragmentInteractionListener} interface
+ * {@link ShodanFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LeaderBoardFragment#newInstance} factory method to
+ * Use the {@link ShodanFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LeaderBoardFragment extends Fragment {
+public class ShodanFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    WifiConfiguration mWifiConfiguration;
+    String mHotSpotBssid;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private RecyclerView mRecyclerView;
-    private LeaderBoardRecyclerAdapter mRecyclerAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     private OnFragmentInteractionListener mListener;
 
-    public LeaderBoardFragment() {
+    public ShodanFragment() {
         // Required empty public constructor
     }
 
@@ -47,11 +50,11 @@ public class LeaderBoardFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LeaderBoardFragment.
+     * @return A new instance of fragment ShodanFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LeaderBoardFragment newInstance(String param1, String param2) {
-        LeaderBoardFragment fragment = new LeaderBoardFragment();
+    public static ShodanFragment newInstance(String param1, String param2) {
+        ShodanFragment fragment = new ShodanFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,6 +68,7 @@ public class LeaderBoardFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -72,27 +76,7 @@ public class LeaderBoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_leader_board, container, false);
-//        String[] items = {"Item1", "Item2", "Item3", "Item4", "Item5", "Item6",
-//                "Item7", "Item8", "Item9", "Item10"};
-//        String [] itemDetails = {"Item1Details", "Item2Details", "Item3Details",
-//                "Item4Details", "Item5Details", "Item6Details", "Item7Details", "Item8Details", "Item9Details", "Item10Details"};
-//        String [] itemLocations = {"Item1Loc", "Item2Loc", "Item3Loc", "Item4Loc", "Item5Loc", "Item6Loc",
-//                "Item7Loc", "Item8Loc", "Item9Loc", "Item10Loc"};
-//        int[] itemPics = {android.R.drawable.arrow_up_float, android.R.drawable.btn_plus, android.R.drawable.star_big_on,
-//                android.R.drawable.arrow_up_float, android.R.drawable.btn_plus, android.R.drawable.star_big_on,
-//                android.R.drawable.arrow_up_float, android.R.drawable.btn_plus, android.R.drawable.star_big_on, android.R.drawable.alert_light_frame};
-//        mPlanetTitles = getResources().getStringArray(R.array.boroughs_array);
-
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.my_recycler_view);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        // specify an adapter (see also next example)
-        mRecyclerAdapter = new LeaderBoardRecyclerAdapter();
-        mRecyclerView.setAdapter(mRecyclerAdapter);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_shodan, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -119,7 +103,6 @@ public class LeaderBoardFragment extends Fragment {
         mListener = null;
     }
 
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -135,9 +118,35 @@ public class LeaderBoardFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public LeaderBoardRecyclerAdapter getRecyclerAdapter() {
-        return mRecyclerAdapter;
+    //https://api.shodan.io/shodan/host/{ip}?key={YOUR_API_KEY}
+
+
+
+    //IP address 10.179.215.173.
+
+    protected String wifiIpAddress(Context context) {
+        mWifiConfiguration = new WifiConfiguration();
+        mWifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+        mHotSpotBssid = mWifiConfiguration.BSSID;
+        Log.d("IP ADDRESS: ", "FOUND IT: " + wifiIpAddress(getContext()));
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
+
+        // Convert little-endian to big-endianif needed
+        if (ByteOrder.nativeOrder().equals(ByteOrder.LITTLE_ENDIAN)) {
+            ipAddress = Integer.reverseBytes(ipAddress);
+        }
+
+        byte[] ipByteArray = BigInteger.valueOf(ipAddress).toByteArray();
+
+        String ipAddressString;
+        try {
+            ipAddressString = InetAddress.getByAddress(ipByteArray).getHostAddress();
+        } catch (UnknownHostException ex) {
+            Log.e("WIFIIP", "Unable to get host address.");
+            ipAddressString = null;
+        }
+
+        return ipAddressString;
     }
-
-
 }
