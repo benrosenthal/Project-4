@@ -9,9 +9,27 @@
     <color name="dark_grey">#AEAEAE</color>
 
     <color name="accent">#DF4A32</color>
+    <color name="white">#FFFFFF</color>
+    <color name="fluorescent_green">#2CDAB3</color>
 
+    <color name="btn_color">#0BC6A0</color>
+    <color name="btn_disabled_color">#500BC6A0</color>
+    <color name="btn_pressed_color">#08B491</color>
 
     <color name="light_black">#747474</color>
     <color name="black">#616161</color>
     <color name="google">#C6412C</color>
+    <color name="ultra_dark_overlay">#0D29303F</color>
+    <color name="ultra_dark_15">#2629303F</color>
+    <!--TODO : Better way to handle alpha of defined color-->
+    <color name="medium_90">#E694989F</color>
+    <color name="medium_80">#CC94989F</color>
+    <color name="medium_60">#9994989F</color>
+    <color name="medium_40">#6694989F</color>
+    <color name="medium_30">#4D94989F</color>
+    <color name="dark_60">#99696E79</color>
+    <color name="dark_80">#CC696E79</color>
+    <color name="dark_20">#33696E79</color>
+    <color name="dark_90">#E6696E79</color>
+
 </resources>

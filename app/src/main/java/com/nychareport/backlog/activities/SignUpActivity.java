@@ -17,6 +17,7 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ServerValue;
+import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
 import com.nychareport.backlog.Utils;
@@ -129,7 +130,7 @@ public class SignUpActivity extends Activity {
                                 mAuthProgressDialog.dismiss();
                                 Log.i(LOG_TAG, getString(R.string.log_message_auth_successful));
 
-                                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(SignUpActivity.this);
+                                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(BackLogApplication.getCurrentInstance());
                                 SharedPreferences.Editor spe = sp.edit();
 
                                 /**

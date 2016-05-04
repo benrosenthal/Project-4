@@ -8,48 +8,61 @@ import android.os.Parcelable;
  */
 public class Problem implements Parcelable {
 
-    private String mProblem;
-    private String mProblemDescription;
-    private String mProblemLocation;
-    private int mProblemPic;
+    private String problem;
+    private String description;
+    private String location;
+    private String problemPic;
+    private String postedBy;
 
-    public Problem(String problem, String problemDescription, String problemLocation, int problemPic) {
-        mProblem = problem;
-        mProblemDescription = problemDescription;
-        mProblemLocation = problemLocation;
-        mProblemPic = problemPic;
+    public Problem(){}
+
+    public Problem(String problem, String problemDescription, String problemLocation, String problemPic, String postedBy) {
+        this.problem = problem;
+        description = problemDescription;
+        location = problemLocation;
+        this.problemPic = problemPic;
+        this.postedBy = postedBy;
     }
 
+
     public String getProblem() {
-        return mProblem;
+        return problem;
     }
 
     public void setProblem(String problem) {
-        mProblem = problem;
+        this.problem = problem;
     }
 
     public String getProblemDescription() {
-        return mProblemDescription;
+        return description;
     }
 
     public void setProblemDescription(String problemDescription) {
-        mProblemDescription = problemDescription;
+        description = problemDescription;
     }
 
     public String getProblemLocation() {
-        return mProblemLocation;
+        return location;
     }
 
     public void setProblemLocation(String problemLocation) {
-        mProblemLocation = problemLocation;
+        location = problemLocation;
     }
 
-    public int getProblemPic() {
-        return mProblemPic;
+    public String getProblemPic() {
+        return problemPic;
     }
 
-    public void setProblemPic(int problemPic) {
-        mProblemPic = problemPic;
+    public void setProblemPic(String problemPic) {
+        this.problemPic = problemPic;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
+
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
     }
 
     @Override
@@ -59,20 +72,18 @@ public class Problem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mProblem);
-        dest.writeString(mProblemDescription);
-        dest.writeString(mProblemLocation);
-        dest.writeInt(mProblemPic);
+        dest.writeString(problem);
+        dest.writeString(description);
+        dest.writeString(location);
+        dest.writeString(problemPic);
     }
 
     private Problem(Parcel in){
-        mProblem = in.readString();
-        mProblemDescription = in.readString();
-        mProblemLocation = in.readString();
-        mProblemPic = in.readInt();
+        problem = in.readString();
+        description = in.readString();
+        location = in.readString();
+        problemPic = in.readString();
     }
-
-    public Problem(){}
 
     public static final Creator<Problem> CREATOR = new Creator<Problem>() {
         @Override

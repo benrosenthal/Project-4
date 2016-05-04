@@ -7,13 +7,20 @@ import com.firebase.client.Firebase;
  */
 public class BackLogApplication extends android.app.Application {
 
+
+    private static BackLogApplication currentInstance = null;
     @Override
     public void onCreate() {
         super.onCreate();
+        currentInstance = this;
         /* Initialize Firebase */
         Firebase.setAndroidContext(this);
         /* Enable disk persistence  */
         Firebase.getDefaultConfig().setPersistenceEnabled(true);
+    }
+
+    public static synchronized BackLogApplication    getCurrentInstance() {
+        return currentInstance;
     }
 
 }

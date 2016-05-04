@@ -5,6 +5,11 @@
     <string name="title_activity_user_onboarding">UserOnboardingActivity</string>
     <string name="title_activity_main">MainActivity</string>
 
+
+    <string name="typeface_regular">fonts/Whitney-Book-Bas.otf</string>
+    <string name="typeface_light_italics">fonts/Whitney-BookItal-Bas.otf</string>
+    <string name="typeface_bold">fonts/Whitney-Semibold-Bas.otf</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

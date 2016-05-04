@@ -20,6 +20,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
 import com.nychareport.backlog.Utils;
@@ -47,13 +48,12 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPref = PreferenceManager.getDefaultSharedPreferences(BackLogApplication.getCurrentInstance());
         mSharedPrefEditor = mSharedPref.edit();
 
         /**
          * Create Firebase references
          */
-        mFirebaseRef.setAndroidContext(LoginActivity.this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
 
         /**

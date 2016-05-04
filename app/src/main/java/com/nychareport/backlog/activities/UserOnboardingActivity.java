@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.firebase.client.Firebase;
+import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
 
@@ -44,12 +45,14 @@ public class UserOnboardingActivity extends Activity implements AdapterView.OnIt
         developmentsList.setAdapter(adapter);
         developmentsList.setOnItemSelectedListener(this);
         proceedButton = (Button) findViewById(R.id.btn_proceed);
-        final SharedPreferences mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences mSharedPref = PreferenceManager.getDefaultSharedPreferences(BackLogApplication.getCurrentInstance());
+        final SharedPreferences.Editor mSharedPrefEditor = mSharedPref.edit();
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedDevelopment != null && !selectedDevelopment.isEmpty()) {
                     String mEncodedEmail = mSharedPref.getString(Constants.KEY_ENCODED_EMAIL, null);
+                    mSharedPrefEditor.putString(Constants.KEY_HOUSING_DEVELOPMENT, selectedDevelopment).apply();
                     Firebase userRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mEncodedEmail);
                     userRef.child(Constants.FIREBASE_PROPERTY_HOUSING_DEVELOPMENT).setValue(selectedDevelopment);
                     Intent intent = new Intent(UserOnboardingActivity.this, MainActivity.class);
