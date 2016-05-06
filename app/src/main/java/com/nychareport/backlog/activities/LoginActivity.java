@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -40,9 +41,7 @@ public class LoginActivity extends Activity {
     private EditText mEditTextEmailInput, mEditTextPasswordInput;
     private SharedPreferences mSharedPref;
     private SharedPreferences.Editor mSharedPrefEditor;
-    private TextView mTvDontHaveAnAccount;
     private TextView mTvSignUp;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +114,7 @@ public class LoginActivity extends Activity {
                  * already holds userName/provider data from the latest session
                  */
                 if (authData != null) {
-                    Intent intent = new Intent(LoginActivity.this, UserOnboardingActivity.class);
+                     Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
@@ -223,20 +222,13 @@ public class LoginActivity extends Activity {
             Log.i(LOG_TAG, provider + " " + getString(R.string.log_message_auth_successful));
 
             if (authData != null) {
+                /* Save provider name and encodedEmail for later use and start MainActivity */
+                mSharedPrefEditor.putString(Constants.KEY_PROVIDER, authData.getProvider()).apply();
+                mSharedPrefEditor.putString(Constants.KEY_ENCODED_EMAIL, mEncodedEmail).apply();
                 /**
                  * If user has logged in with Password provider
                  */
                 setAuthenticatedUserPasswordProvider(authData);
-
-                /* Save provider name and encodedEmail for later use and start MainActivity */
-                mSharedPrefEditor.putString(Constants.KEY_PROVIDER, authData.getProvider()).apply();
-                mSharedPrefEditor.putString(Constants.KEY_ENCODED_EMAIL, mEncodedEmail).apply();
-
-                /* Go to main activity */
-                Intent intent = new Intent(LoginActivity.this, UserOnboardingActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
             }
         }
 
@@ -288,7 +280,7 @@ public class LoginActivity extends Activity {
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                final User user = dataSnapshot.getValue(User.class);
 
                 if (user != null) {
 
@@ -297,7 +289,6 @@ public class LoginActivity extends Activity {
                      * (never logged in using password provider)
                      */
                     if (!user.isHasLoggedInWithPassword()) {
-
                         /**
                          * Change password if user that just signed in signed up recently
                          * to make sure that user will be able to use temporary password
@@ -308,7 +299,9 @@ public class LoginActivity extends Activity {
                             public void onSuccess() {
                                 userRef.child(Constants.FIREBASE_PROPERTY_USER_HAS_LOGGED_IN_WITH_PASSWORD).setValue(true);
                                         /* The password was changed */
-                                Log.d(LOG_TAG, getString(R.string.log_message_password_changed_successfully) + mEditTextPasswordInput.getText().toString());
+                                Snackbar.make(findViewById(android.R.id.content), getString(R.string.dialog_changed_password_successfully), Snackbar.LENGTH_LONG)
+                                        .setActionTextColor(BackLogApplication.getCurrentInstance().getResources().getColor(R.color.fluorescent_green))
+                                        .show();
                             }
 
                             @Override

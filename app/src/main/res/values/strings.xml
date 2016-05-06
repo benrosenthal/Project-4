@@ -33,9 +33,11 @@
     <string name="button_create_account">Sign Up</string>
     <string name="button_sign_in">Sign In</string>
     <string name="button_signin_with_password">SIGN IN</string>
+    <string name="button_change_password">Change Password</string>
     <string name="hint_enter_email">Enter your email</string>
     <string name="hint_enter_username">Enter your name</string>
     <string name="hint_enter_password">Enter password</string>
+    <string name="hint_confirm_password">Confirm password</string>
 
 
     <!-- Instructions and Loading Text -->
@@ -43,6 +45,8 @@
     <string name="progress_dialog_authenticating_with_firebase">Authenticating with Firebase…
     </string>
     <string name="progress_dialog_creating_user_with_firebase">Attempting to create account…
+    </string>
+    <string name="progress_dialog_changing_password">Changing password...
     </string>
     <string name="progress_dialog_check_inbox">Please check your inbox for your password</string>
 
@@ -60,6 +64,12 @@
     <string name="error_email_taken">The email is already taken.</string>
     <string name="error_invalid_password_not_valid">Please enter a password that is at least 6
         characters long.
+    </string>
+    <string name="dialog_passwords_do_not_match">Sorry...Passwords do not match
+    </string>
+    <string name="dialog_changed_password_successfully">Changed password successfully!
+    </string>
+    <string name="dialog_generic_error_message">Sorry...We\'re fixing a temporary glitch. Please check again after some time
     </string>
     <string name="error_cannot_be_empty">This cannot be empty.</string>
 
@@ -412,4 +422,5 @@
         <item value="163">WYCKOFF GARDENS</item>
     </string-array>
     <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
 </resources>

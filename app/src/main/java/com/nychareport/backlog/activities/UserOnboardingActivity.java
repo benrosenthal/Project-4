@@ -51,10 +51,7 @@ public class UserOnboardingActivity extends Activity implements AdapterView.OnIt
             @Override
             public void onClick(View v) {
                 if (selectedDevelopment != null && !selectedDevelopment.isEmpty()) {
-                    String mEncodedEmail = mSharedPref.getString(Constants.KEY_ENCODED_EMAIL, null);
                     mSharedPrefEditor.putString(Constants.KEY_HOUSING_DEVELOPMENT, selectedDevelopment).apply();
-                    Firebase userRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mEncodedEmail);
-                    userRef.child(Constants.FIREBASE_PROPERTY_HOUSING_DEVELOPMENT).setValue(selectedDevelopment);
                     Intent intent = new Intent(UserOnboardingActivity.this, HomePageActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

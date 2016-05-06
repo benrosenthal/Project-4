@@ -1,11 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp">
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_attached_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/background_button_dark_rounded_border"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_shot_emptystate" />
+
+    <com.nychareport.backlog.customviews.TypefaceTextView
         android:id="@+id/problem_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/LoginCreateText"/>
+        android:paddingTop="5dp"
+        android:layout_height="wrap_content" />
+
+    <com.nychareport.backlog.customviews.TypefaceTextView
+        android:id="@+id/problem_description"
+        style="@style/postTextDescription"
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.nychareport.backlog.customviews.TypefaceTextView
+        android:id="@+id/problem_location"
+        style="@style/postTextDescription"
+        android:drawableLeft="@drawable/ic_map_location"
+        android:text="USA"
+        android:gravity="center_vertical"
+        android:drawablePadding="5dp"
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.nychareport.backlog.customviews.TypefaceTextView
+        android:id="@+id/problem_timestamp"
+        style="@style/postTextDescription"
+        android:paddingTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/medium_30"
+        />
+
 </LinearLayout>

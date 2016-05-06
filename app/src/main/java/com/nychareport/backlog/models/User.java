@@ -8,7 +8,6 @@ import java.util.HashMap;
 public class User {
     private String name;
     private String email;
-    private String housingDevelopment;
     private HashMap<String, Object> timestampJoined;
     private boolean hasLoggedInWithPassword;
 
@@ -32,7 +31,6 @@ public class User {
         this.email = email;
         this.timestampJoined = timestampJoined;
         this.hasLoggedInWithPassword = false;
-        this.housingDevelopment = "";
     }
 
     public String getName() {
@@ -41,10 +39,6 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getHousingDevelopment() {
-        return housingDevelopment;
     }
 
     public HashMap<String, Object> getTimestampJoined() {
