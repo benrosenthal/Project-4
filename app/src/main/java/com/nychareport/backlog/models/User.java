@@ -43,6 +43,10 @@ public class User {
         return email;
     }
 
+    public String getHousingDevelopment() {
+        return housingDevelopment;
+    }
+
     public HashMap<String, Object> getTimestampJoined() {
         return timestampJoined;
     }

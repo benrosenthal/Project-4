@@ -411,4 +411,5 @@
         <item value="174">WSUR (SITE C) 589 AMSTERDAM AVENUE</item>
         <item value="163">WYCKOFF GARDENS</item>
     </string-array>
+    <string name="title_activity_home_page">HomePageActivity</string>
 </resources>

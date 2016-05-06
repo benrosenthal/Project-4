@@ -2,9 +2,11 @@ package com.nychareport.backlog.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,11 +16,14 @@ import android.widget.ImageView;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ServerValue;
 import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
 import com.nychareport.backlog.Utils;
 import com.nychareport.backlog.models.Problem;
+
+import java.util.HashMap;
 
 
 public class PostProblemActivity extends AppCompatActivity implements View.OnClickListener {
@@ -78,17 +83,26 @@ public class PostProblemActivity extends AppCompatActivity implements View.OnCli
             case R.id.btn_done:
                 String userEmail = sharedPreferences.getString(Constants.KEY_ENCODED_EMAIL, null);
                 Firebase postsRef = mFirebaseRef.child(Constants.FIREBASE_LOCATION_POSTS);
+                /**
+                 * Set raw version of date to the ServerValue.TIMESTAMP value and save into
+                 * timestampCreatedMap
+                 */
+                HashMap<String, Object> timestampCreated = new HashMap<>();
+                timestampCreated.put(Constants.FIREBASE_PROPERTY_TIMESTAMP, ServerValue.TIMESTAMP);
                 Problem problem = new Problem(
                         problemTitle.getText().toString(),
                         problemDescription.getText().toString(),
                         problemLocation.getText().toString(),
                         "String decoded bitmap of image",
-                        userEmail);
+                        userEmail,
+                        timestampCreated);
                 Log.d(LOG_TAG, "Problem: " + problem.toString());
                 postsRef.push().setValue(problem, new Firebase.CompletionListener() {
                     @Override
                     public void onComplete(FirebaseError firebaseError, Firebase firebase) {
-                        Log.d(LOG_TAG, "Uploaded!");
+                        Snackbar.make(findViewById(android.R.id.content), "You just posted an issue", Snackbar.LENGTH_LONG)
+                                .setActionTextColor(BackLogApplication.getCurrentInstance().getResources().getColor(R.color.fluorescent_green))
+                                .show();
                     }
                 });
                 break;
