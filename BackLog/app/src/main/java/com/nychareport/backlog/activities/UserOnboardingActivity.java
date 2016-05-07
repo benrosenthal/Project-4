@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.firebase.client.Firebase;
 import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
@@ -19,7 +18,7 @@ import com.nychareport.backlog.R;
 /**
  * Created by Ben Rosenthal on 02/05/16.
  */
-public class UserOnboardingActivity extends Activity implements AdapterView.OnItemSelectedListener{
+public class UserOnboardingActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     private static final String LOG_TAG = UserOnboardingActivity.class.getSimpleName();
 
@@ -53,7 +52,6 @@ public class UserOnboardingActivity extends Activity implements AdapterView.OnIt
                 if (selectedDevelopment != null && !selectedDevelopment.isEmpty()) {
                     mSharedPrefEditor.putString(Constants.KEY_HOUSING_DEVELOPMENT, selectedDevelopment).apply();
                     Intent intent = new Intent(UserOnboardingActivity.this, HomePageActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
                 }
