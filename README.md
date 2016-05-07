@@ -1,4 +1,4 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project Readme :fire:
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) BackLog:
 
 BackLog is a social media-powered, self-report platform designed to enable and empower NYC’s hundreds of thousands of Section 8 residents to publish and file complaints regarding living standard problems, such as building maintenance neglect. 
 
