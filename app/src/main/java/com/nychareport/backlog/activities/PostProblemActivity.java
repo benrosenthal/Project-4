@@ -2,7 +2,7 @@ package com.nychareport.backlog.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
@@ -113,13 +113,13 @@ public class PostProblemActivity extends AppCompatActivity implements View.OnCli
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         switch(requestCode) {
-            case 0:
+            case Constants.REQUEST_CODE_LOAD_FROM_CAMERA:
                 if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
-                    attachedImage.setImageURI(selectedImage);
+                    Bitmap bp = (Bitmap) imageReturnedIntent.getExtras().get("data");
+                    attachedImage.setImageBitmap(bp);
                 }
                 break;
-            case 1:
+            case Constants.REQUEST_CODE_LOAD_FROM_GALLERY:
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
                     attachedImage.setImageURI(selectedImage);
