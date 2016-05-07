@@ -1,9 +1,9 @@
 package com.nychareport.backlog.activities;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,13 +21,11 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-import com.firebase.ui.FirebaseRecyclerAdapter;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
+import com.nychareport.backlog.Utils;
 import com.nychareport.backlog.adapter.ProblemPostAdapter;
 import com.nychareport.backlog.models.Problem;
-import com.nychareport.backlog.viewholder.PostProblemViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +70,14 @@ public class HomePageActivity extends AppCompatActivity
 
         postsRecyclerView = (RecyclerView) findViewById(R.id.posts);
         postsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        postsRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, int itemPosition, RecyclerView parent) {
+                super.getItemOffsets(outRect, itemPosition, parent);
+                outRect.top = Utils.convertDPTOPixels(8);
+                outRect.bottom = Utils.convertDPTOPixels(8);
+            }
+        });
 
         postsAdapter = new ProblemPostAdapter(postsList);
         postsRecyclerView.setAdapter(postsAdapter);
@@ -154,7 +160,8 @@ public class HomePageActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_user_preferences:
-
+                Intent intent = new Intent(HomePageActivity.this, UserOnboardingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_share:
 

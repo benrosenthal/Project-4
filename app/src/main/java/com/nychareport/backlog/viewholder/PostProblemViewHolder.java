@@ -24,6 +24,10 @@ public class PostProblemViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void initializeViews() {
+        attachedProblemImage = (ImageView) itemView.findViewById(R.id.iv_attached_image);
         problemTitle = (TextView) itemView.findViewById(R.id.problem_title);
+        problemDescription = (TextView) itemView.findViewById(R.id.problem_description);
+        problemLocation = (TextView) itemView.findViewById(R.id.problem_location);
+        timeCreated = (TextView) itemView.findViewById(R.id.problem_timestamp);
     }
 }

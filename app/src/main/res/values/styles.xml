@@ -36,6 +36,30 @@
         <item name="android:layout_margin">2dp</item>
     </style>
 
+    <style name="postMiddleComponent"></style>
+
+    <style name="postTextTitle" parent="postMiddleComponent">
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="typeface">@string/typeface_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="postTextDescription" parent="postMiddleComponent">
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="typeface">@string/typeface_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
     <style name="HintText">
         <item name="android:textSize">0dp</item>
     </style>

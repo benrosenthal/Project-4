@@ -46,6 +46,7 @@ public class PostProblemActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_problem);
+        setTitle("Create a Post");
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(BackLogApplication.getCurrentInstance());
         String development = sharedPreferences.getString(Constants.KEY_HOUSING_DEVELOPMENT, null);

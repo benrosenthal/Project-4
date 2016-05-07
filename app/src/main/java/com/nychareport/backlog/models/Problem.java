@@ -87,6 +87,12 @@ public class Problem implements Parcelable {
     }
 
     @JsonIgnore
+    public long getTimestampCreatedLong() {
+
+        return (long) ((timestampCreated != null) ? timestampCreated.get(Constants.FIREBASE_PROPERTY_TIMESTAMP) : 0L);
+    }
+
+    @JsonIgnore
     public long getTimestampLastChangedLong() {
 
         return (long) timestampLastChanged.get(Constants.FIREBASE_PROPERTY_TIMESTAMP);
