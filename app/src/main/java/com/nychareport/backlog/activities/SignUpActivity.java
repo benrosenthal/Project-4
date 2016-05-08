@@ -20,7 +20,7 @@ import com.firebase.client.ServerValue;
 import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
-import com.nychareport.backlog.Utils;
+import com.nychareport.backlog.misc.Utils;
 import com.nychareport.backlog.models.User;
 
 import java.math.BigInteger;

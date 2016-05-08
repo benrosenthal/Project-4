@@ -23,7 +23,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
-import com.nychareport.backlog.Utils;
+import com.nychareport.backlog.misc.Utils;
 import com.nychareport.backlog.adapter.ProblemPostAdapter;
 import com.nychareport.backlog.models.Problem;
 

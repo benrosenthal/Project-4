@@ -24,7 +24,7 @@ import com.firebase.client.ValueEventListener;
 import com.nychareport.backlog.BackLogApplication;
 import com.nychareport.backlog.Constants;
 import com.nychareport.backlog.R;
-import com.nychareport.backlog.Utils;
+import com.nychareport.backlog.misc.Utils;
 import com.nychareport.backlog.models.User;
 
 public class LoginActivity extends Activity {

@@ -9,6 +9,19 @@ package com.nychareport.backlog;
  */
 public final class Constants {
 
+    /*
+     * You should replace these values with your own. See the README for details
+     * on what to fill in.
+     */
+    public static final String COGNITO_POOL_ID = "us-east-1:449d3245-024b-41e0-b06a-c450baa3ba7e";
+
+    /*
+     * Note, you must first create a bucket using the S3 console before running
+     * the sample (https://console.aws.amazon.com/s3/). After creating a bucket,
+     * put it's name in the field below.
+     */
+    public static final String BUCKET_NAME = "backlog-posts-attachedimage";
+
     /**
      * Constants related to locations in Firebase, such as the name of the node
      * where user lists are stored (ie "userLists")

@@ -1,4 +1,4 @@
-package com.nychareport.backlog;
+package com.nychareport.backlog.misc;
 
 import android.content.Context;
 import android.text.SpannableString;
@@ -7,6 +7,8 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
 
+import com.nychareport.backlog.BackLogApplication;
+import com.nychareport.backlog.R;
 import com.nychareport.backlog.customviews.CustomTypefaceSpan;
 
 /**
